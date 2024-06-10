@@ -18,8 +18,6 @@ import com.example.calendar.service.EventService;
 @RequestMapping("/event")
 public class EventController {
 	
-	//commento
-	
 	@Autowired
 	private EventService serv;
 	
