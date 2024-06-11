@@ -1,5 +1,6 @@
 package com.example.calendar.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -68,6 +69,12 @@ public class EventController {
 	public ResponseEntity<List<Event>> getByYear(@RequestParam(value = "year") Integer year) {
 		List<Event> byYear = serv.findByYear(year);
 		return ResponseEntity.ok().body(byYear);
+	}
+	
+	@PostMapping("/repeat")
+	public ResponseEntity<List<Event>> repeatEvent(@RequestParam(value = "n") LocalDateTime n, @RequestBody Event event) {
+		List<Event> repeat = serv.repeatEvent(n, event);
+		return ResponseEntity.ok().body(repeat);
 	}
 	
 }

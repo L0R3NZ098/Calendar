@@ -1,5 +1,6 @@
 package com.example.calendar.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import com.example.calendar.model.Event;
 
@@ -13,5 +14,6 @@ public interface EventService {
 	public List<Event> findByDay(Integer day);
 	public List<Event> findByMonth(Integer month);
 	public List<Event> findByYear(Integer year);
-	
+	public List<Event> repeatEvent(LocalDateTime n, Event event);
+ 	
 }
