@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.calendar.model.Event;
 import com.example.calendar.service.EventService;
@@ -49,6 +50,24 @@ public class EventController {
 	public ResponseEntity<?> deleteEvent(@PathVariable(value = "id") Long id) {
 		serv.deleteEvent(id);
 		return ResponseEntity.ok().build();
+	}
+	
+	@GetMapping("/day")
+	public ResponseEntity<List<Event>> getByDay(@RequestParam(value = "day") Integer day) {
+		List<Event> byDay = serv.findByDay(day);
+		return ResponseEntity.ok().body(byDay);
+	}
+	
+	@GetMapping("/month")
+	public ResponseEntity<List<Event>> getByMonth(@RequestParam(value = "month") Integer month) {
+		List<Event> byMonth = serv.findByMonth(month);
+		return ResponseEntity.ok().body(byMonth);
+	}
+	
+	@GetMapping("/year")
+	public ResponseEntity<List<Event>> getByYear(@RequestParam(value = "year") Integer year) {
+		List<Event> byYear = serv.findByYear(year);
+		return ResponseEntity.ok().body(byYear);
 	}
 	
 }

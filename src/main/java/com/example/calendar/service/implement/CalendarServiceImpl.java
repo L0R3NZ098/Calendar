@@ -43,7 +43,7 @@ public class CalendarServiceImpl implements CalendarService{
 	public Calendar updateCalendar(Long id, Calendar calendar) {
 		Calendar update = this.getCalendarById(id);
 		BeanUtils.copyProperties(calendar, update, "id");
-		repo.save(calendar);
+		repo.save(update);
 		return update;
 	}
 

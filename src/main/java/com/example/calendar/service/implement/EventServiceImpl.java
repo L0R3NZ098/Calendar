@@ -51,7 +51,23 @@ public class EventServiceImpl implements EventService {
 	public void deleteEvent(Long id) {
 		repo.deleteById(id);
 	}
+
+	@Override
+	public List<Event> findByDay(Integer day) {
+		List<Event> byDay = repo.findByDay(day);
+		return byDay;
+	}
 	
+	@Override
+	public List<Event> findByMonth(Integer month) {
+		List<Event> byMonth = repo.findByMonth(month);
+		return byMonth;
+	}
 	
+	@Override
+	public List<Event> findByYear(Integer year) {
+		List<Event> byYear = repo.findByYear(year);
+		return byYear;
+	}
 	
 }
