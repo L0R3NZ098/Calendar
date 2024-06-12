@@ -15,17 +15,17 @@ import com.example.calendar.service.UserService;
 public class UserServiceImpl implements UserService {
 	
 	@Autowired
-	private UserRepository repository;
+	private UserRepository repo;
 	
 	@Override
 	public List<User> getAllUser() {
-		List<User> all = repository.findAll();
+		List<User> all = repo.findAll();
 		return all;
 	}
 
 	@Override
 	public User getUserById(Long id) {
-		Optional<User> one = repository.findById(id);
+		Optional<User> one = repo.findById(id);
 		if (one.isPresent()) {
 			return one.get();
 		} else {
@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User createUser(User user) {
-		User create = repository.save(user);
+		User create = repo.save(user);
 		return create;
 	}
 
@@ -43,13 +43,13 @@ public class UserServiceImpl implements UserService {
 	public User updateUser(Long id, User user) {
 		User update = this.getUserById(id);
 		BeanUtils.copyProperties(user, update);
-		repository.save(update);
+		repo.save(update);
 		return update;
 	}
 
 	@Override
 	public void deleteUser(Long id) {
-		repository.deleteById(id);
+		repo.deleteById(id);
 	}
 
 }

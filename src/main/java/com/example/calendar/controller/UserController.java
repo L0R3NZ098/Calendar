@@ -21,35 +21,35 @@ import com.example.calendar.service.UserService;
 public class UserController {
 	
 	@Autowired
-	private UserService service;
+	private UserService serv;
 	
 	@GetMapping("/getall")
 	public ResponseEntity<List<User>> getAll() {
-		List<User> all = service.getAllUser();
+		List<User> all = serv.getAllUser();
 		return ResponseEntity.ok().body(all);
 	}
 	
 	@GetMapping("/getbyid/{id}")
 	public ResponseEntity<User> getById(@PathVariable(value = "id") Long id) {
-		User one = service.getUserById(id);
+		User one = serv.getUserById(id);
 		return ResponseEntity.ok().body(one);
 	}
 	
 	@PostMapping("/create")
 	public ResponseEntity<User> createUser(@RequestBody User user) {
-		User create = service.createUser(user);
+		User create = serv.createUser(user);
 		return ResponseEntity.ok().body(create);
 	}
 	
 	@PutMapping("/update/{id}")
 	public ResponseEntity<User> updateUser(@PathVariable(value = "id") Long id, @RequestBody User user) {
-		User update = service.updateUser(id, user);
+		User update = serv.updateUser(id, user);
 		return ResponseEntity.ok().body(update);
 	}
 	
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<?> deleteUser(@PathVariable(value = "id") Long id) {
-		service.deleteUser(id);
+		serv.deleteUser(id);
 		return ResponseEntity.ok().build();
 	}
 	
